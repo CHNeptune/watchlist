@@ -28,5 +28,9 @@ def keywords():
     ]
 
     return render_template("result.html",keywords=key,result=result )
-    
+
+@app.errorhandler(404)
+def page_not_found(e):
+    user = "Asshole"
+    return render_template("404.html",user=user), 404
 
