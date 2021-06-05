@@ -5,14 +5,15 @@
 	<title>{{ keywords }} 的搜索结果</title>
 	<style>
 		body{
-		     background: url("/static/back.jpg") no-repeat fixed;
-	             width: 100%;
-        	     height: 100%;
-        	     background-size: 100% 100%;
-        	     position: fixed;
-        	     z-index: -1;
-        	     top: 0;
-        	     left: 0;
+		    background: url("/static/back.jpg") no-repeat fixed;
+			color:cornsilk;
+	        width: 100%;
+        	height: 100%;
+        	background-size: 100% 100%;
+        	
+        	z-index: -1;
+        	top: 0;
+        	left: 0;
 		
 		}
 
@@ -25,19 +26,19 @@
 		</div>
 		 的搜索结果
 	</h2>
-	<p>
-		{{ result|length }} 个结果
-	</p>
+	<p>{{ result|length }} 个结果</p>
+
+
 	<ul>
 		{% for target in result %} {# 迭代 movies 变量 #}
 		<li style="color:white">
-			{{ target.FirstPart }} 		 {{ target.SecondPart }}
+			{{ target.pos }}<br>{{ target.event }}<br>{{target.url}}
 		</li> 
 		{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
 	</ul>
-	<a href="/">
-		BACK
-	</a>
+
+	<a href="/">BACK</a>
+
 	<footer>
 		<small>
 			&copy; 2021/6/3
