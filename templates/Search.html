@@ -21,26 +21,34 @@
 </head>
 <body>
     <div id="back">
-        搜索一下！
-        <div style="height: 10%;min-height: 260px"></div><!--有一定高度的空标签-->
+        天气不错，搜索一下！
+        <div style="min-height: 200px"></div><!--有一定高度的空标签-->
 
 
 
         <div id="box">
 
 
-            <div id="center_pic"></div>
+            <div id="center_pic"><a href="/">
+                <img alt="center_pic" id="cp"  width="150" height="40" src="/static/auto.png">
+                </a>
+            </div>
 
             <form method="POST" action="/keywords">
 
-                <input id="words" name="keywords" type="text" placeholder="输入关键词" class="keywords" required>
-                <input type="submit"  onclick="Sub()" value="搜索" id="search" class="submit">
+                <input id="words" name="keywords" type="text" placeholder="输入关键词" class="main" required>
+                <input type="submit"  onclick="Sub()" value="搜索" id="search" class="main">
 
 
             </form>
         </div>
 
 
+    </div>
+    <div style="float: right ; font-size: 12px">
+        <a href="https://www.baidu.com">去往百度</a>
+        <a href="https://www.bing.com">必应</a>
+        <a href="https://www.google.com">谷歌</a>
     </div>
 </body>
 </html>

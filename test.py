@@ -140,10 +140,10 @@ def Search(searcher):
         Correlation[filename] = weight/(search_Module*text_Module)
     Correlation_order=sorted(Correlation.items(),key=lambda x:x[1],reverse=True)
 
-    print(Correlation_order)
-    print(search)
+    #print(Correlation_order)
+    #print(search)
     i=0
-    print("LENTH OF THIS LIST:---- ",len(Correlation_order))
+    #print("LENTH OF THIS LIST:---- ",len(Correlation_order))
 
     result = []
 

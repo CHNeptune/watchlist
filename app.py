@@ -4,8 +4,10 @@ from flask import Flask, request, make_response
 from flask import url_for
 import test
 
-
 app = Flask(__name__)
+key = ""
+result = []
+score = []#分数列表
 
 @app.route('/')
 def hello():
@@ -13,29 +15,11 @@ def hello():
 
 @app.route('/keywords',methods=["GET","POST"])
 def keywords():
+    global key,result
     key=request.form.get('keywords')
-    print(key)
-
 #TODO---try to get result by the keywords
-
-    result = []
     result = test.Search(key)
-    '''
-    result = [
-        {"FirstPart":"位于阿肯色州和密西西比州交界处的密西西比河","SecondPart":"2021-04-04"},
-        {"FirstPart":"文斯利代尔，英格兰约克郡谷地国家公园","SecondPart":"2021-04-13"},
-        {"FirstPart":"宇航员杰夫·威廉姆斯在国际空间站拍摄到的地球","SecondPart":"2021-04-25"},
-        {"FirstPart":"米斯巴赫的郁金香田，德国巴伐利亚州","SecondPart":"2021-05-08"},
-        {"FirstPart":"飘落的杜鹃花瓣铺在Grassy Ridge Bald山的小径上，北卡罗莱纳州皮斯加国家森林","SecondPart":"2021-05-09"}
-    ]
-    '''
-
-
-
-
-    
     return render_template("result.html",keywords=key,result=result )
-
 
 #This function works on page 404.
 @app.errorhandler(404)
@@ -43,3 +27,11 @@ def page_not_found(e):
     user = "Asshole"
     return render_template("404.html",user=user), 404
 
+@app.route('/judge',methods=["GET","POST"])
+def judge():
+    global score
+    sc = request.form.get('score')
+    print("------------------>  ",sc)
+
+    #TODO 处理提交的评价
+    return render_template("result.html",keywords=key,result=result )

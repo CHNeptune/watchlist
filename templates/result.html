@@ -3,41 +3,94 @@
 <head>
 	<meta charset="utf-8">
 	<title>{{ keywords }} 的搜索结果</title>
+	<link rel="stylesheet" href="/static/style.css" type="text/css">
 	<style>
 		body{
-		    background: url("/static/back.jpg") no-repeat fixed;
-			color:cornsilk;
-	        width: 100%;
-        	height: 100%;
-        	background-size: 100% 100%;
-        	
-        	z-index: -1;
-        	top: 0;
-        	left: 0;
+			background: url("/static/back.jpg") no-repeat fixed;
+			background-size: 100% 100%;
+			color:black;
+			max-width: 1200px;
+			min-width: 950px;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			left: 100px;
+		}
+		#results{
+			max-width: 600px;
+			position: relative;
+			left: 50px;
 		
 		}
 
 	</style>
 </head>
 <body>
-	<h2 style="color:blue "> 
-		<div style="display:inline;color:red;"> 
+<div style="display: inline;">
+	<a href="/" >
+		<img alt="center_pic" id="cp"  width="150" height="40" src="/static/auto.png">
+	</a>
+	<form method="POST" action="/keywords">
+
+		<input id="words" name="keywords" type="text" placeholder="输入关键词" class="main" value="{{keywords}}" required>
+		<input type="submit"  onclick="Sub()" value="搜索" id="search" class="main">
+
+
+	</form>
+
+
+
+</div>
+
+	<h2 style="color:blue ">
+	<div style="display:inline;color:red;">
 			 {{ keywords }} 
-		</div>
-		 的搜索结果
+	</div>
+	的搜索结果
 	</h2>
 	<p>{{ result|length }} 个结果</p>
 
+<div id="judge_block" >
+	请输入您对搜索结果准确率的评价,<br>准确度逐渐升高:
+	<form method="POST" action="/judge" style="position: relative; left: 30px">
+		<input type="radio" class="judge" name="score" value="10" id="j1"><label for="j1">1 丝毫不准确</label><br>
+		<input type="radio" class="judge" name="score" value="20" id="j2"><label for="j2">2 几乎不能用</label><br>
+		<input type="radio" class="judge" name="score" value="30" id="j3"><label for="j3">3 体验很差</label><br>
+		<input type="radio" class="judge" name="score" value="40" id="j4"><label for="j4">4 乱七八糟</label><br>
+		<input type="radio" class="judge" name="score" value="50" id="j5"><label for="j5">5 一般</label><br>
+		<input type="radio" class="judge" name="score" value="60" id="j6"><label for="j6">6 还行</label><br>
+		<input type="radio" class="judge" name="score" value="70" id="j7"><label for="j7">7 勉强</label><br>
+		<input type="radio" class="judge" name="score" value="80" id="j8"><label for="j8">8 还可以</label><br>
+		<input type="radio" class="judge" name="score" value="90" id="j9"><label for="j9">9 不错</label><br>
+		<input type="radio" class="judge" name="score" value="100" id="j10"><label for="j10">10 非常准确</label><br>
+		<input type="submit" value="提交" onclick="alert('提交成功，感谢！')" class="judge">
+	</form>
+</div>
 
+<div id="results">
 	<ul>
 		{% for target in result %} {# 迭代 movies 变量 #}
-		<li style="color:white">
-			{{ target.pos }}<br>{{ target.event }}<br>{{target.url}}
+		<li >
+			<div id="result_title"><a href={{target.url}}>
+				{{ target.pos }}</a>
+			</div>
+			<div id="result_event">
+				{{ target.event[0:150]}}
+			</div>
+			
+			<div id="result_url">
+				{{target.url}}
+			</div>
+			
 		</li> 
 		{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
 	</ul>
+	<a href="/" style="color: #9C1A1C;font-size: 40px ; float: right"><b>返回</b> </a>
+</div>
 
-	<a href="/">BACK</a>
+
+
+	<div style="min-height: 50px"></div>
 
 	<footer>
 		<small>
