@@ -141,7 +141,7 @@ li:last-child {
 
 /*-----------查询结果格式-----------------*/
 #result_title{
-    font-size: 20px;
+    font-size: 22px;
     color: burlywood;
 }
 #result_event{
@@ -149,9 +149,20 @@ li:last-child {
 
 }
 #result_url{
+    float: left;
+    color: blue;
+    font-size: 12px;
+}
+#result_rel{
+    float: right;
+    color:darkblue;
     font-size: 10px;
 }
-
+#result_date{
+    font-size: 11px;
+    float: left;
+    color: #888;
+}
 
 
 

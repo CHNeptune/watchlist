@@ -49,7 +49,7 @@
 	的搜索结果
 	</h2>
 	<p>{{ result|length }} 个结果</p>
-
+	
 <div id="judge_block" >
 	请输入您对搜索结果准确率的评价,<br>准确度逐渐升高:
 	<form method="POST" action="/judge" style="position: relative; left: 30px">
@@ -65,7 +65,10 @@
 		<input type="radio" class="judge" name="score" value="100" id="j10"><label for="j10">10 非常准确</label><br>
 		<input type="submit" value="提交" onclick="alert('提交成功，感谢！')" class="judge">
 	</form>
+	<br>
+	<p style="opacity: .9;font-size: 10;color: #9C1A1C;">*目前的准确率评价值: {{sum}} % </p>
 </div>
+
 
 <div id="results">
 	<ul>
@@ -73,15 +76,22 @@
 		<li >
 			<div id="result_title"><a href={{target.url}}>
 				{{ target.pos }}</a>
+			</div> 
+			<div id="result_date">
+				{{target.date}}
 			</div>
 			<div id="result_event">
-				{{ target.event[0:150]}}
+				{{ target.event[0:200]}}... ...
+			</div>
+			<br>
+			<div id="result_url"><a href={{target.url}}></a>
+				{{target.url}}</a>
+			</div>
+			<div id="result_rel">
+				{{target.rel}}
 			</div>
 			
-			<div id="result_url">
-				{{target.url}}
-			</div>
-			
+			<br>
 		</li> 
 		{% endfor %} {# 使用 endfor 标签结束 for 语句 #}
 	</ul>
