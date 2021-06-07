@@ -62,7 +62,7 @@ def vector(string):
 
     search_weight = {}      #搜索文本向量
     Correlation = dict()  # 相关度
-    print(file_collect)
+    #print(file_collect)
     for filename in file_collect:
         text_weight = {}    #文本向量
         for word in idf.keys():
@@ -130,7 +130,7 @@ def vector(string):
 
         result += [{"pos":record[0],"event":record[3],"url":record[4],"rel":record[1],"date":record[2]}]
 
-    print(result)
+    #print(result)
     return result;       
 
 

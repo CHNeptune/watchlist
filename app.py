@@ -1,6 +1,6 @@
-
+from wsgiref.simple_server import make_server
 from flask import render_template
-from flask import Flask, request, make_response ,redirect
+from flask import Flask, request ,redirect
 from flask import url_for
 import vector
 
@@ -47,3 +47,7 @@ def judge():
 
     #TODO 处理提交的评价
     return redirect(url_for('keywords'))
+if __name__ == "__main__" :
+    server = make_server("0.0.0.0",80,app)
+    server.serve_forever()
+    app.run()
